@@ -5,7 +5,7 @@ class HabitTable extends StatelessWidget {
   
   final List<Habit> habits;
 
-  const HabitTable({super.key, required this.habits,});
+  const HabitTable({required this.habits,});
   
 
   @override build(BuildContext context)

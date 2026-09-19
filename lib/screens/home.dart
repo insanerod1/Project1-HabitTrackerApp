@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habittracker/Controllers/HabitController.dart';
 import 'package:habittracker/widgets/datatable.dart';
+import 'package:habittracker/Controllers/SaveController.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeState extends State<HomeScreen> {
   final HabitController habitController = HabitController();
-
+ 
   @override
   void initState() {  //this guy is the function that changes the state of the homepage
     super.initState();
@@ -44,7 +45,14 @@ class _HomeState extends State<HomeScreen> {
               ),
 
               const SizedBox(width: 5, height: 10),
-              ElevatedButton(onPressed: () {}, child: Text("Save")),
+              ElevatedButton(onPressed: () {
+                if(textController.text.isEmpty)
+                {
+                  return;
+                }
+                SaveController save = SaveController(habitController.getHabitList(), textController.text);
+                print(save.toString());
+              }, child: Text("Save")),
 
               const SizedBox(width: 5, height: 10),
               ElevatedButton(onPressed: () {}, child: Text("Load")),
