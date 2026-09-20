@@ -16,10 +16,16 @@ class Habit {
   {
     return _date;
   }
-  
+
+  Map<String, dynamic> toJson() => {
+    "item" : _item,
+    "date" : _date,
+  };
+  /*
   @override 
   String toString()
   {
     return "Habit: $_item, Date: $_date";
   }
+  */
 }

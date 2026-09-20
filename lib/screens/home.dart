@@ -51,7 +51,7 @@ class _HomeState extends State<HomeScreen> {
                   return;
                 }
                 SaveController save = SaveController(habitController.getHabitList(), textController.text);
-                print(save.toString());
+                //print(save.toString());
               }, child: Text("Save")),
 
               const SizedBox(width: 5, height: 10),
