@@ -24,4 +24,19 @@ class SaveHabit
     "habits" : _habitList.map((habit) => habit.toJson()).toList(),
   };
 
+  factory SaveHabit.fromJson(Map<String, dynamic> json)
+  {
+    var list = json['habits'] as List<dynamic>;
+
+    List<Habit> habitList = list
+        .map((item) => Habit.fromJson(item as Map<String, dynamic>))
+        .toList();
+
+    return SaveHabit(
+      habitList,
+      json['title'] as String,
+      json['date'] as String,
+      json['id'] as int
+    );
+  }
 }

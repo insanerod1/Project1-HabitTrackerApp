@@ -21,6 +21,12 @@ class Habit {
     "item" : _item,
     "date" : _date,
   };
+
+  factory Habit.fromJson(Map<String, dynamic> json) => Habit(
+     json['item'] as String,
+      json['date'] as String,
+      );
+  
   /*
   @override 
   String toString()
