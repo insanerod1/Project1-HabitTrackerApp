@@ -5,24 +5,37 @@ import 'package:habittracker/Storage/habit-database.dart';
 class SaveController {
   final SavedHabitsDatabase repository;
 
+  SaveController() : repository = SavedHabitsDatabase.instance;
+
   List<SaveHabit> _savedHabits = [];
 
   List<SaveHabit> get savedHabits {
-    return List.un
+    return List.unmodifiable(_savedHabits);
   }  
 
-  List<Habit> _list = [];
-  String _title = '';
-  DateTime _now = DateTime.now();
+  Future<SaveHabit> saveHabitList(List<Habit> habits, String title)
+  async {
+    final save = SaveHabit(
+      List<Habit>.from(habits),
+      title,
+      DateTime.now().toString(),
+    );
+      final savedHabit = await repository.create(save);
 
-  SaveController(this.repository, List<Habit> habits, String title)
-  {
-    this._list = habits;
-    this._title = title;
+      _savedHabits.add(savedHabit);
+
+      return savedHabit;
+    }
+
+
+
+  Future<void> loadAllSaves() async {
+    
+    _savedHabits = await repository.readAll();
+    
   }
-
-  @override
-  String toString() {
-    return _list.toString() + " " + _title + " " + _now.toString();
+  
+  Future<SaveHabit> loadOneSave(int id) {
+    return repository.readOne(id);
   }
 }

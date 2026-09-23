@@ -23,7 +23,9 @@ class SavedHabitsDatabase {
     final dbPath = await getDatabasesPath(); //store in file storage
     final path = join(dbPath, filePath);
 
-    return await openDatabase(path, version: 1, onCreate:_createDB); //takes the path, a version, and your DB skimmer
+    return await openDatabase(path, version: 1, onCreate:_createDB, onOpen:(db) async {
+      print('Database Opened successfully');
+    },); //takes the path, a version, and your DB skimmer
   } 
 
   Future _createDB(Database db, int version) async {
@@ -36,7 +38,7 @@ class SavedHabitsDatabase {
     CREATE TABLE $savedListTable (
     ${TableFields.id} $idType,
     ${TableFields.title} $textType,
-    ${TableFields.date} $textType,
+    ${TableFields.date} $textType
     )
     ''');
 

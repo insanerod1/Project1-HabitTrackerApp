@@ -21,6 +21,17 @@ class HabitController extends ChangeNotifier
     notifyListeners();
   }
 
+  void clearHabits()
+  {
+    _model.clearHabits();
+    notifyListeners();
+  }
+  void replaceHabits(List<Habit> habit)
+  {
+    _model.replaceHabits(habit);
+    notifyListeners();
+  }
+
   List<Habit> getHabitList() {
     return _model.habits;
   }

@@ -1,7 +1,7 @@
 import './Habits.dart';
 
 class HabitData  {
-  final List<Habit> _habitList = [];
+  List<Habit> _habitList = [];
   
   List<Habit> get habits => List.unmodifiable(_habitList);
   
@@ -15,5 +15,12 @@ class HabitData  {
     _habitList.remove(habit);
   }
 
-  
+  void clearHabits()
+  {
+    _habitList.clear();
+  }
+  void replaceHabits(List<Habit> habits)
+  {
+    _habitList = habits;
+  }
 }

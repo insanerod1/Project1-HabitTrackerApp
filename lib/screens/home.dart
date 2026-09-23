@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:habittracker/Controllers/HabitController.dart';
+import 'package:habittracker/Models/HabitSave.dart';
 import 'package:habittracker/widgets/datatable.dart';
 import 'package:habittracker/Controllers/SaveController.dart';
+import 'package:habittracker/screens/saved_files.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeState extends State<HomeScreen> {
   final HabitController habitController = HabitController();
+  final SaveController saveController = SaveController();
  
   @override
   void initState() {  //this guy is the function that changes the state of the homepage
@@ -50,12 +53,28 @@ class _HomeState extends State<HomeScreen> {
                 {
                   return;
                 }
-                SaveController save = SaveController(habitController.getHabitList(), textController.text);
+                saveController.saveHabitList(habitController.getHabitList(), textController.text);
+                textController.clear();
+                habitController.clearHabits();
                 //print(save.toString());
               }, child: Text("Save")),
 
               const SizedBox(width: 5, height: 10),
-              ElevatedButton(onPressed: () {}, child: Text("Load")),
+              ElevatedButton(
+                onPressed: () async {
+                  final SaveHabit? selectedSave = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Loadscreen(),
+                    ),
+                  );
+
+                  if (selectedSave != null) {
+                    habitController.replaceHabits(selectedSave.getHabits());
+                  }
+                },
+                child: const Text("Load"),
+              ),
             ],
           ),
         ),

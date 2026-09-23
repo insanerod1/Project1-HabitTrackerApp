@@ -25,19 +25,34 @@ class SaveHabit
     this._id = id;
   }
 
-  String? getDate()
+  String getDate()
   {
-    return _date;
+    return _date ?? '';
   }
 
-  String? getTitle()
+  String getTitle()
   {
-    return _title;
+    return _title ?? '';
   }
 
   List<Habit> getHabits()
   {
     return _habitList;
+  }
+
+  void setList(List<Habit> habits)
+  {
+    _habitList = habits;
+  }
+
+  void setTitle(String? title)
+  {
+    _title = title;
+  }
+
+  void setDate(String date)
+  {
+    _date = date;
   }
 
   SaveHabit copy({
