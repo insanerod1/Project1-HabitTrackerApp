@@ -16,6 +16,7 @@ class HabitController extends ChangeNotifier
 
   void submitHabit() {
     var habit = Habit(textController.text, now.toString());
+
     _model.addHabit(habit); 
     textController.clear();
     notifyListeners();
@@ -36,5 +37,21 @@ class HabitController extends ChangeNotifier
     return _model.habits;
   }
 
-  
+  void ShowDialog(String message, BuildContext context )
+  {
+    showDialog(context: context, builder: (context) {
+      return AlertDialog(
+        title: Text("Invalid Name"),
+        content: Text(message),
+        actions: [
+          MaterialButton(
+            onPressed: () { 
+              Navigator.pop(context);
+            },
+            child: Text('OK'),
+          )
+        ]
+      );
+    });
+  }
 }
