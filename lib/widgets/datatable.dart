@@ -12,8 +12,8 @@ class HabitTable extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: DataTable(
         columns: const [
-          DataColumn(columnWidth: FlexColumnWidth(3), label: Text('Habit')),
-          DataColumn(columnWidth: FlexColumnWidth(1), label: Text('Date')),
+          DataColumn(columnWidth: FlexColumnWidth(2), label: Text('Habit')),
+          DataColumn(columnWidth: FlexColumnWidth(2), label: Text('Date')),
         ],
         rows: habits.map((habit) {
           return DataRow(
@@ -23,7 +23,6 @@ class HabitTable extends StatelessWidget {
                   habit.getItem(),
                   softWrap: true,
                   overflow: TextOverflow.clip,
-                  style: TextStyle(fontWeight: FontWeight(30)),
                 ),
               ),
               DataCell(
