@@ -1,17 +1,26 @@
-# habittracker
+# Habit Tracker
 
-A new Flutter project.
+Habit Tracker is a Flutter mobile application built with Dart that helps users create, organize, and manage daily habits. Habits are displayed in a structured data table with separate columns for the habit name and date.
 
-## Getting Started
+The application allows users to save multiple named habit lists and load them later. SQLite provides persistent local storage using separate tables for saved lists and individual habits, connected through a foreign-key relationship.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Add and display daily habits
+- View habits in a structured data table
+- Save multiple named habit lists
+- Store saved lists locally with SQLite
+- Load previously saved habit lists
+- Automatically associate individual habits with their saved list
+- Uses controller, model, and repository architecture
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Technologies Used
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Dart
+- Flutter
+- SQLite
+- `sqflite`
+- `sqflite_common_ffi`
+- `path`
+
+This project was created to practice Flutter development, state management, relational database design, and asynchronous CRUD operations.
